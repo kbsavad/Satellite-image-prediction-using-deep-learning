@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Satellite AI - Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+    <div class="hero-image-container">
+        <img src="{{ url_for('static', filename='satellite img.png') }}" alt="Satellite Background">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="dashboard-wrapper">
+        <div class="sidebar">
+            <h3 class="logo">SATELLITE AI</h3>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                
+                <a href="{{ url_for('profile') }}" class="active">Profile</a>
+                
+                <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section">
+                <header>
+                    <h1>Operator Profile</h1>
+                </header>
+
+                <div class="card profile-card glass-card">
+                    <div class="profile-header">
+                        <div class="avatar">
+                            <img src="https://ui-avatars.com/api/?name={{ user.name }}&background=7b2ff7&color=fff&size=128" alt="Avatar">
+                        </div>
+                        <h2>{{ session['username'] }}</h2>
+                        <p class="role">Satellite Operator</p>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <span>Access Level:</span>
+                            <strong>Level 4 (Neural Scan)</strong>
+                        </div>
+                        <div class="detail-item">
+                            <span>Station:</span>
+                            <strong>Mangalore,Karnataka</strong>
+                        </div>
+                        <div class="detail-item">
+                            <span>Status:</span>
+                            <strong style="color: #00d2ff;">ONLINE</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

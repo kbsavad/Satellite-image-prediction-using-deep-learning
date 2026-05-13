@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Satellite | Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="home-body">
+
+    <div class="hero-image-container">
+        <img src="{{ url_for('static', filename='satellite img.png') }}" alt="Satellite Background">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <nav class="home-nav">
+        <div class="logo">SATELLITE AI</div>
+        <div class="nav-links">
+            {% if 'username' in session %}
+                <a href="{{ url_for('dashboard') }}" class="nav-btn signup">Go to Dashboard</a>
+                <a href="{{ url_for('logout') }}" class="nav-btn">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-btn">Login</a>
+                <a href="{{ url_for('register') }}" class="nav-btn signup">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1 class="fade-in">Welcome to AI Based<br><span>Satellite Image Prediction</span></h1>
+            <p class="fade-in-delay">Empowering global surveillance through deep-learning architectures and real-time neural scene classification.</p>
+            
+            <div class="hero-btns fade-in-delay">
+                {% if 'username' in session %}
+                    <a href="{{ url_for('dashboard') }}" class="main-cta">Launch Dashboard</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="main-cta">Get Started</a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

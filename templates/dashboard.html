@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite AI - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+    <div class="hero-image-container">
+        <img src="{{ url_for('static', filename='satellite img.png') }}" alt="Satellite Background">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="dashboard-wrapper">
+        <div class="sidebar">
+            <h3 class="logo">SATELLITE AI</h3>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+
+                <a href="{{ url_for('dashboard') }}" 
+                   class="{% if request.endpoint == 'dashboard' %}active{% endif %}">
+                   Dashboard
+                </a>
+
+                <a href="{{ url_for('profile') }}" 
+                   class="{% if request.endpoint == 'profile' %}active{% endif %}">
+                   Profile
+                </a>
+
+                <a href="{{ url_for('logout') }}" class="logout-link">
+                   Logout
+                </a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section">
+                <header>
+                    <h1>AI Based Satellite Image Prediction</h1>
+                </header>
+
+                <div class="upload-container card glass-card">
+                    <h3>Upload Satellite Imagery</h3>
+                    <p>Drag and drop or click the icon below to select an image for analysis.</p>
+
+                    <form action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
+                        <label for="file-upload" class="custom-file-label">
+                            <img src="{{ url_for('static', filename='upload img.png') }}" alt="Upload Icon" class="upload-art">
+                            <span id="file-name">Click to choose image</span>
+                        </label>
+                        
+                        <input type="file" id="file-upload" name="file" accept="image/*" required onchange="updateFileName()">
+                        
+                        <button type="submit" class="predict-btn">ANALYZE IMAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateFileName() {
+            const input = document.getElementById('file-upload');
+            const display = document.getElementById('file-name');
+            if (input.files.length > 0) {
+                display.innerText = "Selected: " + input.files[0].name;
+                display.style.color = "#00d2ff"; 
+            }
+        }
+    </script>
+</body>
+</html>

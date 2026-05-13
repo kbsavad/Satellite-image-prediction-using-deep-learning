@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Satellite AI - Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+    <div class="hero-image-container">
+        <img src="{{ url_for('static', filename='satellite img.png') }}" alt="Satellite Background">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="dashboard-wrapper">
+        <div class="sidebar">
+            <h3 class="logo">SATELLITE AI</h3>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                
+                <a href="{{ url_for('dashboard') }}" 
+                   class="{% if request.endpoint == 'dashboard' %}active{% endif %}">
+                   Dashboard
+                </a>
+
+                <a href="{{ url_for('profile') }}" 
+                   class="{% if request.endpoint == 'profile' %}active{% endif %}">
+                   Profile
+                </a>
+
+                <a href="{{ url_for('logout') }}" class="logout-link">
+                   Logout
+                </a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section">
+                <h1>Prediction Results</h1>
+                
+                <div style="display: flex; gap: 30px; width: 100%; max-width: 900px;">
+                    <div class="card glass-card" style="flex: 1;">
+                        <img src="{{ url_for('static', filename='uploads/' + image_name) }}" class="prediction-img" style="width: 100%; border-radius: 10px;">
+                    </div>
+                    
+                    <div class="card glass-card" style="flex: 1; text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                        <h2 style="color: #7b2ff7; text-transform: uppercase;">Predicted: {{ prediction }}</h2>
+                        <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 20px 0;">
+                        <p style="color: #888;">Confidence Score</p>
+                        <h1 style="font-size: 64px; margin: 10px 0; color: #00d2ff;">{{ confidence }}%</h1>
+                        <a href="{{ url_for('dashboard') }}">
+                            <button class="predict-btn" style="width: 80%;">Analyze Another Image</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

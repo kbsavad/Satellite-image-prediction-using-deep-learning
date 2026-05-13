@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="auth-container">
+    <h2>Create Account</h2>
+    <p style="color: #888;">Fill in details to get started</p>
+    <form action="{{ url_for('register') }}" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">REGISTER</button>
+    </form>
+    <p style="font-size: 14px;">Already have an account? <a href="{{ url_for('login') }}" style="color: #7b2ff7;">Login here</a></p>
+</div>
