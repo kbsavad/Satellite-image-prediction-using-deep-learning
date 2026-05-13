@@ -1,0 +1,12 @@
+# Web Framework & Database
+Flask==3.1.3
+Flask-MySQLdb==2.0.0
+mysqlclient==2.2.8
+
+# AI & Data Processing
+tensorflow==2.16.1
+numpy==1.26.4
+pillow==12.2.0
+
+# WSGI Server (Optional but recommended for deployment)
+Werkzeug==3.1.8

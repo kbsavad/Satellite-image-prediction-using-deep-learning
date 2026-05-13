@@ -93,9 +93,9 @@ def dashboard():
 def predict():
     # --- SECURITY LOCK ---
     # If 'username' is not in the session, redirect to login
-    if 'username' not in session:
-        flash("Unauthorized access! Please login to use the AI scanner.")
-        return redirect(url_for('login'))
+    # if 'username' not in session:
+    #flash("Unauthorized access! Please login to use the AI scanner.")
+    #      return redirect(url_for('login'))
     # ---------------------
 
     file = request.files.get("file")
